@@ -138,21 +138,13 @@ tb_top.v
 
 ```bash
 # Compile
-iverilog -g2012 -o sim_out \
-    design/apb_top.v \
-    design/apb_master.v \
-    design/apb_interconnect.v \
-    design/apb_slave_ram.v \
-    design/apb_slave_reg.v \
-    design/apb_slave_rom.v \
-    tb/apb_protocol_checker.v \
-    tb/tb_top.v
+iverilog -g2012 -y . -o apb_sim.out tb_top.v
 
 # Run
-vvp sim_out
+vvp apb_sim.out
 
 # View waveform (requires GTKWave)
-gtkwave sim/apb_top.vcd
+gtkwave apb_top.vcd
 ```
 
 > **Note:** `tb_tasks.v` and `test_scenarios.v` are `include`-d inside `tb_top.v` — do not pass them as separate compilation targets.
